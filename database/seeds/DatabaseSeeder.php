@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 class DatabaseSeeder extends Seeder
 {
 
-    protected $toTruncate = ['users', 'exercises', 'concepts'];
+    protected $toTruncate = ['users', 'concept_exercise', 'exercises', 'concepts'];
 
     /**
      * Seed the application's database.

@@ -35,6 +35,10 @@ class Exercise extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function concepts(){
+        return $this->belongsToMany(Concept::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

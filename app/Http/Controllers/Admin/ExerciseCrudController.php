@@ -29,16 +29,44 @@ class ExerciseCrudController extends CrudController
     protected function setupListOperation()
     {
         $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
+        $this->crud->addColumn(['name' => 'description', 'type' => 'text', 'label' => 'Description']);
     }
 
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(ExerciseRequest::class);
         $this->crud->addField(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
+        $this->crud->addField(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
+        $this->crud->addField(  [       // Select2Multiple = n-n relationship (with pivot table)
+            'label' => "Concepts",
+            'type' => 'select2_multiple',
+            'name' => 'concepts', // the method that defines the relationship in your Model
+            'entity' => 'concepts', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Concept", // foreign key model
+            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
     }
 
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
     }
+
+    protected function setupShowOperation()
+    {
+        $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
+        $this->crud->addColumn(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
+        $this->crud->addColumn(
+            [
+                'label' => "Concepts",
+                'name' => 'concepts', // the method that defines the relationship in your Model
+                'type' => 'select_multiple',
+                'entity' => 'concepts', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Models\Concept", // foreign key model
+                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            ]);
+    }
+
 }

@@ -62,11 +62,13 @@ class ConceptCrudController extends CrudController
             [
                 'label' => "Exercise",
                 'name' => 'exercises', // the method that defines the relationship in your Model
-                'type' => 'select_multiple',
-                'entity' => 'exercises', // the method that defines the relationship in your Model
-                'attribute' => 'name', // foreign key attribute that is shown to user
-                'model' => "App\Models\Exercise", // foreign key model
-                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+                'type' => 'model_function',
+                'function_name' => 'getExerciseSlugs',
+
+//                'entity' => 'exercises', // the method that defines the relationship in your Model
+//                'attribute' => 'name', // foreign key attribute that is shown to user
+//                'model' => "App\Models\Exercise", // foreign key model
+//                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
             ]);
     }
 }

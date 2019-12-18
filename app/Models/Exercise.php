@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
+use ReflectionClass;
 
 class Exercise extends Model
 {
@@ -28,7 +29,24 @@ class Exercise extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    public function getConceptSlugs(){
+        $slugs = array();
+        foreach($this->concepts as $concept){
+            array_push($slugs, '<a href="' . $concept->slug("show").'">'.$concept->name.'</a>');
+        }
+        return implode(', ', $slugs);
+    }
 
+    public function slug($action){
+        try {
+            $reflection = new ReflectionClass($this);
+            $reflection = strtolower($reflection->getShortName());
+            return url(config('backpack.base.route_prefix') . '/' . $reflection . '/' . $this->id . '/' . $action);
+
+        } catch (\ReflectionException $e) {
+            return url('/');
+        }
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

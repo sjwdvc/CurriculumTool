@@ -42,6 +42,15 @@ class ConceptCrudController extends CrudController
         $this->crud->addField(['name' => 'kwalificatiedossier_included', 'label' => 'Covered by KD', 'type' => 'checkbox']);
         $this->crud->addField(['name' => 'dvc_included', 'label' => 'Covered by DVC', 'type' => 'checkbox']);
 
+        $this->crud->addField([  // Select2
+            'label' => "Belongs to concept",
+            'type' => 'select2',
+            'name' => 'concept_id', // the db column for the foreign key
+            'entity' => 'concept', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Concept", // foreign key model
+        ]);
+
         $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
             'label' => "Exercises",
             'type' => 'select2_multiple',

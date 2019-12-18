@@ -21,7 +21,7 @@ class Concept extends Model
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
-    // protected $hidden = [];
+     protected $hidden = ['concept_id'];
     // protected $dates = [];
 
     /*
@@ -56,6 +56,10 @@ class Concept extends Model
 
     public function exercises(){
         return $this->belongsToMany(Exercise::class);
+    }
+
+    public function concept(){
+        return $this->belongsTo(Concept::class);
     }
 
     /*

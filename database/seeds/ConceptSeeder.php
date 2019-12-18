@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Concept;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,5 +22,13 @@ class ConceptSeeder extends Seeder
 
         factory(App\Models\Concept::class, $amount)->create();
         $this->command->info('Seeded ' . $amount . ' concepts');
+        $concepts = Concept::all();
+        foreach($concepts as $concept){
+            $conceptToLink = $concepts->random();
+            if($conceptToLink->id != $concept->id){
+                $concept->concept_id = $conceptToLink->id;
+                $concept->save();
+            }
+        }
     }
 }

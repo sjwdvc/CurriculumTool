@@ -18,6 +18,8 @@ class CreateConceptsTable extends Migration
             $table->text('description');
             $table->boolean('kwalificatiedossier_included');
             $table->boolean('dvc_included');
+            $table->unsignedInteger('concept_id')->nullable();
+
             $table->timestamps();
         });
     }

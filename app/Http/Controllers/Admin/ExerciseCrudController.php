@@ -37,7 +37,7 @@ class ExerciseCrudController extends CrudController
         $this->crud->setValidation(ExerciseRequest::class);
         $this->crud->addField(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addField(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
-        $this->crud->addField(  [       // Select2Multiple = n-n relationship (with pivot table)
+        $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
             'label' => "Concepts",
             'type' => 'select2_multiple',
             'name' => 'concepts', // the method that defines the relationship in your Model

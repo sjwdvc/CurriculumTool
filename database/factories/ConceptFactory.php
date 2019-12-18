@@ -9,6 +9,8 @@ use Faker\Generator as Faker;
 $factory->define(Concept::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->word,
-        'description' => $faker->text
+        'description' => $faker->text,
+        'kwalificatiedossier_included' => false,
+        'dvc_included' => false,
     ];
 });

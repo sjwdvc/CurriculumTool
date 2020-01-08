@@ -83,5 +83,19 @@ class ConceptCrudController extends CrudController
 //                'model' => "App\Models\Exercise", // foreign key model
 //                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
             ]);
+
+
+        $this->crud->addColumn(
+            [
+                'label' => "Belongs to concept",
+                'name' => 'concept', // the method that defines the relationship in your Model
+                'type' => 'model_function',
+                'function_name' => 'getConceptSlug',
+
+//                'entity' => 'exercises', // the method that defines the relationship in your Model
+//                'attribute' => 'name', // foreign key attribute that is shown to user
+//                'model' => "App\Models\Exercise", // foreign key model
+//                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            ]);
     }
 }

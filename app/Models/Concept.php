@@ -48,6 +48,17 @@ class Concept extends Model
         }
     }
 
+    public function getConceptSlug(){
+        if($this->concept){
+            return '<a href="' . $this->concept->slug("show").'">'.$this->concept->name.'</a>';
+
+        }
+        else {
+            return '-';
+        }
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

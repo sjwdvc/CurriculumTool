@@ -73,7 +73,7 @@ class ConceptCrudController extends CrudController
         $this->crud->addColumn(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
         $this->crud->addColumn(
             [
-                'label' => "Exercise",
+                'label' => "Exercises",
                 'name' => 'exercises', // the method that defines the relationship in your Model
                 'type' => 'model_function',
                 'function_name' => 'getExerciseSlugs',

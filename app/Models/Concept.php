@@ -31,11 +31,16 @@ class Concept extends Model
     |--------------------------------------------------------------------------
     */
     public function getExerciseSlugs(){
-        $slugs = array();
-        foreach($this->exercises as $exercise){
-            array_push($slugs , '<a href="' . $exercise->slug("show").'">'.$exercise->name.'</a>');
+        if($this->exercises->isNotEmpty()) {
+            $slugs = array();
+            foreach ($this->exercises as $exercise) {
+                array_push($slugs, '<a href="' . $exercise->slug("show") . '">' . $exercise->name . '</a>');
+            }
+            return implode(', ', $slugs);
         }
-        return implode(', ',$slugs);
+        else{
+            return '-';
+        }
     }
 
     public function slug($action){
@@ -52,7 +57,6 @@ class Concept extends Model
     public function getConceptSlug(){
         if($this->concept){
             return '<a href="' . $this->concept->slug("show").'">'.$this->concept->name.'</a>';
-
         }
         else {
             return '-';

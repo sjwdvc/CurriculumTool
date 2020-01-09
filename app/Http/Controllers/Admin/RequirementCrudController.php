@@ -28,6 +28,7 @@ class RequirementCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addColumn(['name' => 'description', 'type' => 'text', 'label' => 'Description']);
     }
 
@@ -35,6 +36,7 @@ class RequirementCrudController extends CrudController
     {
         $this->crud->setValidation(RequirementRequest::class);
 
+        $this->crud->addField(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addField(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
         $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
             'label' => "Concepts",
@@ -54,6 +56,7 @@ class RequirementCrudController extends CrudController
 
     protected function setupShowOperation()
     {
+        $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addColumn(['name' => 'description', 'type' => 'textarea', 'label' => 'Description']);
         $this->crud->addColumn(
             [

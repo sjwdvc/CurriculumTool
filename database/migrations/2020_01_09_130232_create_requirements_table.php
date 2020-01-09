@@ -14,7 +14,8 @@ class CreateRequirementsTable extends Migration
     {
         Schema::create('requirements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description')->unique();
+            $table->string('name')->unique();
+            $table->string('description');
             $table->timestamps();
         });
     }

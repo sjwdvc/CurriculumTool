@@ -62,6 +62,19 @@ class Concept extends Model
         }
     }
 
+    public function getRequirementsSlug(){
+        if($this->requirements->isNotEmpty()) {
+            $slugs = array();
+            foreach ($this->requirements as $requirement) {
+                array_push($slugs, '<a href="' . $requirement->slug("show") . '">' . $requirement->name . '</a>');
+            }
+            return implode(', ', $slugs);
+        }
+        else{
+            return '-';
+        }
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

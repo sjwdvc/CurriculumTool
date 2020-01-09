@@ -62,6 +62,16 @@ class ConceptCrudController extends CrudController
             'model' => "App\Models\Exercise", // foreign key model
             'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
         ]);
+
+        $this->crud->addField([       // Select2Multiple = n-n relationship (with pivot table)
+            'label' => "Requirements",
+            'type' => 'select2_multiple',
+            'name' => 'requirements', // the method that defines the relationship in your Model
+            'entity' => 'requirement', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model' => "App\Models\Requirement", // foreign key model
+            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+        ]);
     }
 
     protected function setupUpdateOperation()
@@ -99,5 +109,19 @@ class ConceptCrudController extends CrudController
 //                'model' => "App\Models\Exercise", // foreign key model
 //                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
             ]);
+
+        $this->crud->addColumn(
+            [
+                'label' => "Belongs to requirement",
+                'name' => 'requirements', // the method that defines the relationship in your Model
+                'type' => 'model_function',
+                'function_name' => 'getRequirementsSlug',
+
+//                'entity' => 'exercises', // the method that defines the relationship in your Model
+//                'attribute' => 'name', // foreign key attribute that is shown to user
+//                'model' => "App\Models\Exercise", // foreign key model
+//                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            ]);
+
     }
 }

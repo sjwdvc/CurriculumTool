@@ -16,7 +16,6 @@ class CreateConceptsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description');
-            $table->boolean('kwalificatiedossier_included');
             $table->boolean('dvc_included');
             $table->unsignedInteger('concept_id')->nullable();
 

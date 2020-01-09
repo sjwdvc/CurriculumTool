@@ -31,7 +31,7 @@ class ConceptCrudController extends CrudController
         $this->crud->addColumn(['name' => 'name', 'type' => 'text', 'label' => 'Name']);
         $this->crud->addColumn(['name' => 'description', 'type' => 'text', 'label' => 'Description']);
 
-        $this->crud->addColumn(['name' => 'kwalificatiedossier_included', 'type' => 'check_for_relation', 'label' => 'KD']);
+        $this->crud->addColumn(['name' => 'kwalificatiedossier_included', 'type' => 'check_for_relation', 'label' => 'KD', 'relation' => 'requirements']);
 
         $this->crud->addColumn(['name' => 'dvc_included', 'type' => 'check', 'label' => 'DV']);
     }

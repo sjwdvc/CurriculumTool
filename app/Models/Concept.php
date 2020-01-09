@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use PharIo\Manifest\Requirement;
 use ReflectionClass;
 
 class Concept extends Model
@@ -62,7 +61,6 @@ class Concept extends Model
             return '-';
         }
     }
-
 
     /*
     |--------------------------------------------------------------------------

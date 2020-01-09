@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use PharIo\Manifest\Requirement;
-use ReflectionClass;
 
-class Concept extends Model
+class Requirement extends Model
 {
     use CrudTrait;
 
@@ -17,12 +15,12 @@ class Concept extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'concepts';
+    protected $table = 'requirements';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
-     protected $hidden = ['concept_id'];
+    // protected $hidden = [];
     // protected $dates = [];
 
     /*
@@ -30,35 +28,6 @@ class Concept extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
-    public function getExerciseSlugs(){
-        $slugs = array();
-        foreach($this->exercises as $exercise){
-            array_push($slugs , '<a href="' . $exercise->slug("show").'">'.$exercise->name.'</a>');
-        }
-        return implode(', ',$slugs);
-    }
-
-    public function slug($action){
-        try {
-            $reflection = new ReflectionClass($this);
-            $reflection = strtolower($reflection->getShortName());
-            return url(config('backpack.base.route_prefix') . '/' . $reflection . '/' . $this->id . '/' . $action);
-
-        } catch (\ReflectionException $e) {
-            return url('/');
-        }
-    }
-
-    public function getConceptSlug(){
-        if($this->concept){
-            return '<a href="' . $this->concept->slug("show").'">'.$this->concept->name.'</a>';
-
-        }
-        else {
-            return '-';
-        }
-    }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -66,16 +35,8 @@ class Concept extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function exercises(){
-        return $this->belongsToMany(Exercise::class);
-    }
-
-    public function concept(){
-        return $this->belongsTo(Concept::class);
-    }
-
-    public function requirements(){
-        return $this->belongsToMany(Requirement::class);
+    public function concepts(){
+        return $this->belongsToMany(Concept::class);
     }
 
     /*

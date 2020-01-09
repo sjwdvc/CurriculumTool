@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 class DatabaseSeeder extends Seeder
 {
 
-    protected $toTruncate = ['users', 'concept_exercise', 'exercises', 'concepts'];
+    protected $toTruncate = ['concept_requirement', 'concept_exercise', 'exercises', 'concepts', 'requirements', 'users'];
 
     /**
      * Seed the application's database.
@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
          $this->call(BackpackUserSeeder::class);
          $this->call(ExerciseSeeder::class);
          $this->call(ConceptSeeder::class);
+         $this->call(RequirementSeeder::class);
 
         Model::reguard();
     }

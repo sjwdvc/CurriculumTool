@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExercisesTable extends Migration
+class CreateRequirementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreateExercisesTable extends Migration
      */
     public function up()
     {
-        Schema::create('exercises', function (Blueprint $table) {
+        Schema::create('requirements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->text('description');
+            $table->string('description')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateExercisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercises');
+        Schema::dropIfExists('requirements');
     }
 }

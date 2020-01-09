@@ -30,11 +30,16 @@ class Exercise extends Model
     |--------------------------------------------------------------------------
     */
     public function getConceptSlugs(){
-        $slugs = array();
-        foreach($this->concepts as $concept){
-            array_push($slugs, '<a href="' . $concept->slug("show").'">'.$concept->name.'</a>');
+        if($this->concepts->isNotEmpty()){
+            $slugs = array();
+            foreach($this->concepts as $concept){
+                array_push($slugs, '<a href="' . $concept->slug("show").'">'.$concept->name.'</a>');
+            }
+            return implode(', ', $slugs);
         }
-        return implode(', ', $slugs);
+        else{
+            return '-';
+        }
     }
 
     public function slug($action){

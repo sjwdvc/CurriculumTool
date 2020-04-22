@@ -15,7 +15,7 @@ class CreateConceptsTable extends Migration
         Schema::create('concepts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->boolean('dvc_included');
             $table->unsignedInteger('concept_id')->nullable();
 

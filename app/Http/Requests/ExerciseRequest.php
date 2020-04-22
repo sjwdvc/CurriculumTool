@@ -26,7 +26,7 @@ class ExerciseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:exercises,name,'.request('id'),
+            'name' => 'required|min:1|max:255|unique:exercises,name,'.request('id'),
         ];
     }
 
@@ -52,6 +52,7 @@ class ExerciseRequest extends FormRequest
         return [
             '*.required' => 'Het :attribute veld is verplicht',
             '*.max' => 'Het :attribute veld mag maximaal :max karakters hebben',
+            '*.min' => 'Het :attribute veld moet minimaal :min karakters hebben',
             '*.unique' => 'Het :attribute veld moet uniek zijn',
         ];
     }
